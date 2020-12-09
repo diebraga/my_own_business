@@ -30,13 +30,13 @@ export default async function handler(
       const params: Stripe.Checkout.SessionCreateParams = {
         submit_type: 'pay',
         payment_method_types: ['card'],
-        billing_address_collection: 'auto',
+        billing_address_collection: 'required',
         shipping_address_collection: {
-          allowed_countries: ['US', 'CA'],
+          allowed_countries: ['IE', 'US', 'CA', 'GB'],
         },
         line_items,
         success_url: `${req.headers.origin}/result?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${req.headers.origin}/use-shopping-cart`,
+        cancel_url: `${req.headers.origin}`,
       };
       const checkoutSession: Stripe.Checkout.Session = await stripe.checkout.sessions.create(
         params
