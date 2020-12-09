@@ -3,7 +3,7 @@ import Cart from '../components/Cart';
 import CartSummary from '../components/CartSummary';
 import Products from '../components/Products';
 
-function Shop() {
+const Shop: React.FC = () => {
   return(
     <Layout title="Shopping Cart | Next.js + TypeScript + React-Router">
       <div className="page-container">

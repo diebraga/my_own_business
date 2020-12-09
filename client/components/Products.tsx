@@ -3,7 +3,7 @@ import React from 'react';
 import products from '../data/products.json';
 import { useShoppingCart, formatCurrencyString } from 'use-shopping-cart';
 
-const Products = () => {
+const Products: React.FC = () => {
   const { addItem, removeItem } = useShoppingCart();
 
   return (
@@ -12,6 +12,7 @@ const Products = () => {
         <div key={product.sku} className="product">
           <img src={product.image} alt={product.name} />
           <h2>{product.name}</h2>
+          <h2>{product.description}</h2>
           <p className="price">
             {formatCurrencyString({
               value: product.price,
