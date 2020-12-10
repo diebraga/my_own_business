@@ -1,10 +1,34 @@
-import React from 'react';
-
-import products from '../data/products.json';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useShoppingCart, formatCurrencyString } from 'use-shopping-cart';
 
-const Products: React.FC = () => {
+interface Props {
+  sku: string;
+  image?: string;
+  name: string;
+  descrption?: string;
+  price: number;
+  currency: string; 
+  value: number;
+}
+
+const Products = () => {
+  const [products, setProducts] = useState<Props[]>([]);
   const { addItem, removeItem } = useShoppingCart();
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+    try {
+        const res = await axios.get(`http://localhost:8000/api/products/`);
+        setProducts(res.data);
+    }
+    catch (err) {
+      alert('Error connection!')
+    }
+  }
+
+    fetchProduct();
+  }, []);
 
   return (
     <section className="products">
@@ -12,7 +36,7 @@ const Products: React.FC = () => {
         <div key={product.sku} className="product">
           <img src={product.image} alt={product.name} />
           <h2>{product.name}</h2>
-          <h2>{product.description}</h2>
+          <h2>{product.descrption}</h2>
           <p className="price">
             {formatCurrencyString({
               value: product.price,
