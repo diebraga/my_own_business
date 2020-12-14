@@ -1,14 +1,21 @@
-import { Route, Switch } from "react-router-dom";
-import Shop from './shop';
+import Layout from '../components/Layout';
+import Cart from '../components/Cart';
+import CartSummary from '../components/CartSummary';
+import Products from '../components/Products';
+import { NextPage } from 'next';
 
-const App: React.FC = () => {
+const Shop: NextPage = () => {
   return(
-      <Switch>
-        <Route path="/" exact component={Shop} />
-      </Switch>
+    <Layout title="Shopping Cart | Next.js + TypeScript + React-Router">
+      <div className="page-container">
+        <h1>Shopping Cart</h1>
+        <Cart>
+          <CartSummary />
+          <Products />
+        </Cart>
+      </div>
+    </Layout>
   );
 }
 
-export default App;
-
-
+export default Shop;

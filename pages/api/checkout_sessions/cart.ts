@@ -9,6 +9,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
  * so you know the pricing information is accurate.
  */
 import { validateCartItems } from 'use-shopping-cart/src/serverUtil';
+import inventory from '../../../data/products.json';
 
 import Stripe from 'stripe';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
@@ -22,7 +23,6 @@ export default async function handler(
 ) {
   if (req.method === 'POST') {
     try {
-      const inventory = await fetch('http://localhost:8000/api/products/').then(response => response.json());
       // Validate the cart details that were sent from the client.
       const cartItems = req.body;
       const line_items = validateCartItems(inventory, cartItems);
