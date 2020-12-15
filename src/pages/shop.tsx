@@ -1,11 +1,12 @@
-import Layout from '../components/Layout';
-import Cart from '../components/Cart';
-import CartSummary from '../components/CartSummary';
-import Products from '../components/Products';
-import { NextPage } from 'next';
+import React from 'react'
+import Layout from '../components/Layout'
+import Cart from '../components/Cart'
+import CartSummary from '../components/CartSummary'
+import Products from '../components/Products'
+import { NextPage } from 'next'
 
 const Shop: NextPage = () => {
-  return(
+  return (
     <Layout title="Shopping Cart | Next.js + TypeScript + React-Router">
       <div className="page-container">
         <h1>Shopping Cart</h1>
@@ -15,7 +16,7 @@ const Shop: NextPage = () => {
         </Cart>
       </div>
     </Layout>
-  );
+  )
 }
 
-export default Shop;
+export default Shop

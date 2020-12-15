@@ -1,28 +1,22 @@
-/* Variables */
-:root {
-  --body-color: #fcfdfe;
-  --body-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    sans-serif;
-  --h1-color: #1a1f36;
-  --h2-color: #7b818a;
-  --h3-color: #a3acb9;
-  --radius: 6px;
+import { createGlobalStyle } from 'styled-components'
+
+export default createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: ${props => props.theme.colors.background};
+    color: ${props => props.theme.colors.text};
+    font: 400 16px Roboto, sans-serif;
+  }
+
+  :root {
   --container-width-max: 1280px;
   --page-width-max: 600px;
   --transition-duration: 2s;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background: var(--body-color);
-  overflow-y: scroll;
-}
-
-* {
-  box-sizing: border-box;
-  font-family: var(--body-font-family);
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 #__next {
@@ -37,9 +31,6 @@ body {
   flex-direction: row;
 }
 
-.error-message {
-  color: #ef2961;
-}
 
 button {
   color: white;
@@ -52,12 +43,12 @@ button {
   transition: all 0.2s ease;
   display: block;
   width: 100%;
-  background: black;
+  background: #8257e9;
 }
 
   button:hover {
-    background: whitesmoke;
-    color: #3c4257;
+    background: #cb6ff2;
+    color: black;
     border: 3px;
     transition: 0.4s;
   }
@@ -66,7 +57,6 @@ button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-
 
 /* Products */
 .products {
@@ -98,7 +88,7 @@ button:disabled {
     gap: 2rem;
     grid-template-columns: repeat(2, 1fr);
     margin-top: 3rem;
-  }  
+  }
 }
 
 @media only screen and (max-width: 460px) {
@@ -107,5 +97,7 @@ button:disabled {
     gap: 2rem;
     grid-template-columns: repeat(1, 1fr);
     margin-top: 3rem;
-  }  
+  }
 }
+
+`
