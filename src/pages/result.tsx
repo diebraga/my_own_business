@@ -1,15 +1,27 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
+import Confetti from 'react-confetti'
+import { MdCheckCircle } from 'react-icons/md'
 
 import Layout from '../components/Layout'
 import Cart from '../components/Cart'
-import ClearCart from '../components//ClearCart'
+import ClearCart from '../components/ClearCart'
 
 import { fetchGetJSON } from '../utils/api-helpers'
 import useSWR from 'swr'
 
 const ResultPage: NextPage = () => {
+  const [width, setWidth] = useState(0)
+  const [height, setHeight] = useState(0)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setWidth(window.innerWidth)
+      setHeight(window.innerHeight)
+    }, 100)
+  })
+
   const router = useRouter()
 
   // Fetch CheckoutSession from static page via
@@ -25,10 +37,13 @@ const ResultPage: NextPage = () => {
 
   return (
     <Layout title="Checkout Payment Result | Next.js + TypeScript Example">
-      <div className="page-container">
-        <h1>Checkout Payment Result</h1>
-        <h2>Status: {data?.payment_intent?.status ?? 'loading...'}</h2>
-        <h3>CheckoutSession response:</h3>
+      <div className="page-container text-center align-items-center">
+        <Confetti width={width} height={height} numberOfPieces={450} />
+        <MdCheckCircle className="text-success" size={100} />
+        <h1>Congrats!</h1>
+        <p style={{ fontSize: '20px' }}>
+          Your payment has been processed successfully!
+        </p>
         <Cart>
           <ClearCart />
         </Cart>

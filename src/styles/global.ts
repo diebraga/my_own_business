@@ -13,24 +13,13 @@ export default createGlobalStyle`
     font: 400 16px Roboto, sans-serif;
   }
 
-  :root {
-  --container-width-max: 1280px;
-  --page-width-max: 600px;
-  --transition-duration: 2s;
-}
-
-#__next {
-  display: flex;
-  justify-content: center;
-}
-
 .container {
-  max-width: var(--container-width-max);
   padding: 45px 25px;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
-
 
 button {
   color: white;
