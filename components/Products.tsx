@@ -1,8 +1,7 @@
-import Link from 'next/link'
 import { useShoppingCart, formatCurrencyString } from 'use-shopping-cart';
 import products from '../data/products.json';
 import { NextPage } from 'next';
-
+import { Button } from '@chakra-ui/react'
 
 const Products: NextPage = () => {
   const { addItem, removeItem } = useShoppingCart();
@@ -19,18 +18,18 @@ const Products: NextPage = () => {
               currency: product.currency,
             })}
           </p>
-          <button
+          <Button
             className="cart-style-background"
             onClick={() => addItem(product)}
           >
             Add to cart
-          </button>
-          <button
+          </Button>
+          <Button
             className="cart-style-background"
             onClick={() => removeItem(product.sku)}
           >
             Remove
-          </button>
+          </Button>
         </div>
       ))}
     </section>
