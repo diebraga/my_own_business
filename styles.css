@@ -30,13 +30,6 @@ body {
   justify-content: center;
 }
 
-.container {
-  max-width: var(--container-width-max);
-  padding: 45px 25px;
-  display: flex;
-  flex-direction: row;
-}
-
 .error-message {
   color: #ef2961;
 }

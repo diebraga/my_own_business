@@ -10,7 +10,7 @@ const ThemeMode: React.FC = () => {
       >
         {colorMode === 'dark' ? 'Light mode theme' : 'Dark mode theme'}
       </MenuItem>
-      </MenuGroup>
+    </MenuGroup>
     </>
   )
 }
