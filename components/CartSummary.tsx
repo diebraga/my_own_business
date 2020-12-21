@@ -63,7 +63,7 @@ const CartSummary: React.FC = () => {
         onClick={clearCart}
       >
         <strong>
-          Clear Cart&nbsp;&nbsp; ✖
+          Clear Cart&nbsp;&nbsp; &#10005;
         </strong>
       </MenuItem>
     </form>

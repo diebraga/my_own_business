@@ -17,8 +17,8 @@ import { MdSettings } from 'react-icons/md'
 import ThemeMode from './ThemeMode'
 
 const Navbar: React.FC = () => {
-  const bg = useColorModeValue('cyan.100', 'cyan.1000')
-  const color = useColorModeValue('cyan.700', 'cyan .100')
+  const bg = useColorModeValue('gray.100', 'gray.1000')
+  const color = useColorModeValue('blue.700', 'blue .100')
 
   return (
     <>
