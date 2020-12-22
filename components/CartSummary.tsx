@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { MenuItem } from "@chakra-ui/react"
 import { useShoppingCart } from 'use-shopping-cart';
 import { fetchPostJSON } from '../utils/api-helpers';
+import { FcCancel } from 'react-icons/fc'
 
 const CartSummary: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -47,7 +48,7 @@ const CartSummary: React.FC = () => {
 
       {/* Redirects the user to Stripe */}
       <MenuItem
-        color='green.400'
+        color='green.500'
         className="cart-style-background"
         type="submit"
         disabled={cartEmpty || loading}
@@ -57,13 +58,13 @@ const CartSummary: React.FC = () => {
         </strong>
       </MenuItem>
       <MenuItem
-        color='red.400'
+        color='red.500'
         className="cart-style-background"
         type="button"
         onClick={clearCart}
       >
         <strong>
-          Clear Cart&nbsp;&nbsp; &#10005;
+          Clear Cart&nbsp;&nbsp; ❌
         </strong>
       </MenuItem>
     </form>
