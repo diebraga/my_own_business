@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MenuItem } from "@chakra-ui/react"
+import { MenuItem, useToast } from "@chakra-ui/react"
 import { useShoppingCart } from 'use-shopping-cart';
 import { fetchPostJSON } from '../utils/api-helpers';
 
@@ -13,6 +13,8 @@ const CartSummary: React.FC = () => {
     cartDetails,
     redirectToCheckout,
   } = useShoppingCart();
+
+  const toast = useToast();
 
   useEffect(() => setCartEmpty(!cartCount), [cartCount]);
 
@@ -50,17 +52,24 @@ const CartSummary: React.FC = () => {
         color='green.500'
         className="cart-style-background"
         type="submit"
-        disabled={cartEmpty || loading}
       >
         <strong>
           Checkout&nbsp;&nbsp; ✔
         </strong>
       </MenuItem>
       <MenuItem
+        disabled={cartEmpty || loading}
         color='red.500'
         className="cart-style-background"
         type="button"
-        onClick={clearCart}
+        onClick={() => {clearCart(); toast({
+          title: "Item Cleared.",
+          description: "Your cart is empty.",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        })
+      }}
       >
         <strong>
           Clear Cart&nbsp;&nbsp; ❌

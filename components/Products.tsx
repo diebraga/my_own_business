@@ -10,6 +10,7 @@ import {
   Box, 
   Spacer, 
   useColorModeValue,
+  useToast,
 } from '@chakra-ui/react'
 import { FaCartPlus } from 'react-icons/fa'
 import { AiFillMinusCircle } from 'react-icons/ai'
@@ -20,6 +21,8 @@ const Products: NextPage = () => {
   const [loading, setLoading] = useState(false);
   const colorIcon = useColorModeValue('gray.700', 'teal.300')
   const { cartCount } = useShoppingCart();
+
+  const toast = useToast();
 
   useEffect(() => setCartEmpty(!cartCount), [cartCount]);
 
@@ -48,7 +51,14 @@ const Products: NextPage = () => {
               boxSize='50px'
               className="cart-style-background"
               disabled={cartEmpty || loading}
-              onClick={() => removeItem(product.sku)}
+              onClick={() => {removeItem(product.sku); toast({
+                title: "Item Removed.",
+                description: "Check your cart.",
+                status: "warning",
+                duration: 3000,
+                isClosable: true,
+              })
+            }}
             >
               <AiFillMinusCircle size={25} />
             </IconButton> 
@@ -60,7 +70,14 @@ const Products: NextPage = () => {
                 mt='10px'
                 boxSize='50px'
                 className="cart-style-background"
-                onClick={() => addItem(product)}
+                onClick={() => {addItem(product); toast({
+                  title: "Item added to cart.",
+                  description: "Item added succesfully.",
+                  status: "success",
+                  duration: 3000,
+                  isClosable: true,
+                })
+              }}
               >
                 <FaCartPlus size={25} />
             </IconButton>
