@@ -18,12 +18,12 @@ import Summary from './CartSummary'
 import { FaShoppingCart } from 'react-icons/fa'
 import { FiMoreVertical } from 'react-icons/fi'
 import ThemeMode from './ThemeMode'
+import Wishlist from './Wishlist'
 
 const Navbar: React.FC = () => {
   const bg = useColorModeValue('gray.100', '#090e1a')
-  const color = useColorModeValue('gray.700', 'gray .50')
+  const color = useColorModeValue('gray.700', 'gray.50')
   const { isOpen, onOpen, onClose } = useDisclosure()
-
 
   return (
     <>
@@ -53,6 +53,8 @@ const Navbar: React.FC = () => {
           </DrawerBody>
         </DrawerContent>
       </Drawer>
+
+      <Wishlist />
 
       <Menu>
       <MenuButton bg={bg} color={color} ml={1} variant="ghost" as={Button} >
