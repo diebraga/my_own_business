@@ -1,16 +1,14 @@
+import { useState, useEffect } from 'react';
 import { useShoppingCart, formatCurrencyString } from 'use-shopping-cart';
 import products from '../data/products.json';
 import { NextPage } from 'next';
 import { 
   IconButton, 
   SimpleGrid, 
-  WrapItem, 
-  Center, 
   Image,  
   Heading,
   Box, 
   Spacer, 
-  Wrap,
   useColorModeValue,
 } from '@chakra-ui/react'
 import { FaCartPlus } from 'react-icons/fa'
@@ -18,9 +16,12 @@ import { AiFillMinusCircle } from 'react-icons/ai'
 
 const Products: NextPage = () => {
   const { addItem, removeItem } = useShoppingCart();
-  const bg = useColorModeValue('gray.100', '#090e1a')
-  const color = useColorModeValue('gray.700', 'gray .100')
+  const [cartEmpty, setCartEmpty] = useState(true);
+  const [loading, setLoading] = useState(false);
   const colorIcon = useColorModeValue('gray.700', 'teal.300')
+  const { cartCount } = useShoppingCart();
+
+  useEffect(() => setCartEmpty(!cartCount), [cartCount]);
 
   return (
     <>
@@ -38,17 +39,18 @@ const Products: NextPage = () => {
                 })} EUR
             </Heading>
           </Box>
-          <SimpleGrid minChildWidth="10px" spacing="10px" pb={1} justifyItems='center'>
+          <SimpleGrid minChildWidth="10px" spacing="10px" pb={2} justifyItems='center'>
             <IconButton
-                color={colorIcon}
-                aria-label="Remove Item"
-                borderRadius="full"
-                mt='10px'
-                boxSize='50px'
-                className="cart-style-background"
-                onClick={() => removeItem(product.sku)}
-              >
-                <AiFillMinusCircle size={25} />
+              color={colorIcon}
+              aria-label="Remove Item"
+              borderRadius="full"
+              mt='10px'
+              boxSize='50px'
+              className="cart-style-background"
+              disabled={cartEmpty || loading}
+              onClick={() => removeItem(product.sku)}
+            >
+              <AiFillMinusCircle size={25} />
             </IconButton> 
             <Spacer/>
               <IconButton

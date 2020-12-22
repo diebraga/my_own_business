@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { MenuItem } from "@chakra-ui/react"
 import { useShoppingCart } from 'use-shopping-cart';
 import { fetchPostJSON } from '../utils/api-helpers';
-import { FcCancel } from 'react-icons/fc'
 
 const CartSummary: React.FC = () => {
   const [loading, setLoading] = useState(false);
