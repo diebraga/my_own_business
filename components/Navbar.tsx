@@ -21,7 +21,7 @@ import ThemeMode from './ThemeMode'
 
 const Navbar: React.FC = () => {
   const bg = useColorModeValue('gray.100', '#090e1a')
-  const color = useColorModeValue('gray.700', 'gray .100')
+  const color = useColorModeValue('gray.700', 'gray .50')
   const { isOpen, onOpen, onClose } = useDisclosure()
 
 
