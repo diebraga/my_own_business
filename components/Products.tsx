@@ -30,16 +30,15 @@ const Products: NextPage = () => {
     <>
     <SimpleGrid minChildWidth="150px" spacing={2} mt={10} p={2} className="products">
       {products.map((product) => (
-        <Box boxShadow="xl" maxWidth="300px">
+        <Box maxWidth="300px" key={product.sku}>
           <Box>
             <Image src={product.image} alt={product.name} h='200px'/>
             <Box mt={2} as='h1'>{product.name}</Box>
-            <Box as='h3'>{product.description}</Box>
             <Heading as='h4' size="xs" mt='10px'>
-                {formatCurrencyString({
-                  value: product.price,
-                  currency: product.currency,
-                })} EUR
+              {formatCurrencyString({
+                value: product.price,
+                currency: product.currency,
+              })} EUR
             </Heading>
           </Box>
           <SimpleGrid minChildWidth="10px" spacing="10px" pb={2} justifyItems='center'>

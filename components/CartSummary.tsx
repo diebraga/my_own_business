@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MenuItem, useToast } from "@chakra-ui/react"
+import { Button, useToast, Text } from "@chakra-ui/react"
 import { useShoppingCart } from 'use-shopping-cart';
 import { fetchPostJSON } from '../utils/api-helpers';
 
@@ -40,26 +40,19 @@ const CartSummary: React.FC = () => {
   return (
     <form onSubmit={handleCheckout}>
       {/* This is where we'll render our cart */}
-      <MenuItem suppressHydrationWarning>
+      <Text suppressHydrationWarning mt={3}>
         <strong>Number of Items:</strong>&nbsp; {cartCount}
-      </MenuItem>
-      <MenuItem suppressHydrationWarning>
+      </Text>
+      <Text suppressHydrationWarning mt={2}>
         <strong>Total:</strong>&nbsp; {formattedTotalPrice}
-      </MenuItem>
+      </Text>
 
       {/* Redirects the user to Stripe */}
-      <MenuItem
-        color='green.500'
-        className="cart-style-background"
-        type="submit"
-      >
-        <strong>
-          Checkout&nbsp;&nbsp; ✔
-        </strong>
-      </MenuItem>
-      <MenuItem
+      <Button
         disabled={cartEmpty || loading}
+        mt={2}
         color='red.500'
+        w='100%'
         className="cart-style-background"
         type="button"
         onClick={() => {clearCart(); toast({
@@ -74,7 +67,19 @@ const CartSummary: React.FC = () => {
         <strong>
           Clear Cart&nbsp;&nbsp; ❌
         </strong>
-      </MenuItem>
+      </Button>
+      <Button
+        color='green.500'
+        w='100%'
+        mt={2}
+        className="cart-style-background"
+        type="submit"
+      >
+        <strong>
+          Checkout&nbsp;&nbsp; ✔
+        </strong>
+      </Button>
+
     </form>
   );
 };
