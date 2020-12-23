@@ -11,9 +11,11 @@ import {
   Spacer, 
   useColorModeValue,
   useToast,
+  Flex
 } from '@chakra-ui/react'
 import { FaCartPlus } from 'react-icons/fa'
 import { AiFillMinusCircle } from 'react-icons/ai'
+import { FiHeart } from 'react-icons/fi'
 
 const Products: NextPage = () => {
   const { addItem, removeItem } = useShoppingCart();
@@ -41,14 +43,17 @@ const Products: NextPage = () => {
               })} EUR
             </Heading>
           </Box>
-          <SimpleGrid minChildWidth="10px" spacing="10px" pb={2} justifyItems='center'>
+          
+          <Flex minChildWidth="5px" pb={2} justifyItems='center'>
+          <Spacer/>
             <IconButton
               color={colorIcon}
               aria-label="Remove Item"
               borderRadius="full"
               mt='10px'
+              mr={1}
               boxSize='50px'
-              className="cart-style-background"
+              variant="ghost"
               disabled={cartEmpty || loading}
               onClick={() => {removeItem(product.sku); toast({
                 title: "Item Removed.",
@@ -59,16 +64,17 @@ const Products: NextPage = () => {
               })
             }}
             >
-              <AiFillMinusCircle size={25} />
+              <AiFillMinusCircle size={20} />
             </IconButton> 
-            <Spacer/>
+            
               <IconButton
                 color={colorIcon}
                 aria-label="Add Item"
                 borderRadius="full"
+                variant="ghost"
                 mt='10px'
+                mr={1}
                 boxSize='50px'
-                className="cart-style-background"
                 onClick={() => {addItem(product); toast({
                   title: "Item added to cart.",
                   description: "Item added succesfully.",
@@ -78,9 +84,27 @@ const Products: NextPage = () => {
                 })
               }}
               >
-                <FaCartPlus size={25} />
+                <FaCartPlus size={20} />
             </IconButton>
-          </SimpleGrid>
+
+            <IconButton
+                colorScheme='pink'
+                aria-label="Add to wish list"
+                borderRadius="full"
+                variant="ghost"
+                mt='10px'
+                boxSize='50px'
+                onClick={() => {addItem(product); toast({
+                  title: "Item added to wishlist.",
+                  status: "info",
+                  duration: 3000,
+                  isClosable: true,
+                })
+              }}
+              >
+                <FiHeart size={20} />
+            </IconButton>
+          </Flex>
         </Box>   
       ))}
     </SimpleGrid>

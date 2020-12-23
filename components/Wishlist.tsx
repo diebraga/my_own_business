@@ -24,6 +24,8 @@ const Wishlist: React.FC = () => {
       variant="ghost" 
       as={Button} 
       onClick={onOpen}
+      borderRadius="full"
+      boxSize='50px'
     >
       <FiHeart size={20}/>
     </Button>

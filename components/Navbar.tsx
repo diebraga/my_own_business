@@ -41,6 +41,8 @@ const Navbar: React.FC = () => {
         variant="ghost" 
         as={Button} 
         onClick={onOpen}
+        borderRadius="full"
+        boxSize='50px'
       >
         <FaShoppingCart size={20}/>
       </Button>
@@ -57,7 +59,15 @@ const Navbar: React.FC = () => {
       <Wishlist />
 
       <Menu>
-      <MenuButton bg={bg} color={color} ml={1} variant="ghost" as={Button} >
+      <MenuButton 
+        bg={bg} 
+        color={color} 
+        ml={1} 
+        variant="ghost" 
+        as={Button} 
+        borderRadius="full"
+        boxSize='50px'
+      >
         <FiMoreVertical size={20}/>
       </MenuButton>
         <MenuList boxShadow="lg">
