@@ -11,7 +11,7 @@ import {
 import { FiHeart } from 'react-icons/fi'
 
 const Wishlist: React.FC = () => {
-  const bg = useColorModeValue('gray.100', '#090e1a')
+  const bg = useColorModeValue('gray.100', '#000912')
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (

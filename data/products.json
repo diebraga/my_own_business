@@ -1,18 +1,42 @@
 [
   {
-    "name": "Bananas",
-    "description": "Yummy yellow fruit",
-    "sku": "sku_GBJ2Ep8246qeeT",
-    "price": 400,
-    "image": "https://images.unsplash.com/photo-1574226516831-e1dff420e562?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=225&q=80",
+    "name": "Denin Jacket",
+    "description": "Denin Jacket cool brand jeans new",
+    "sku": "sku_GBJ2Ep8246qttthjkllmneDenineT",
+    "price": 12000,
+    "image": "https://images.pexels.com/photos/1040945/pexels-photo-1040945.jpeg?cs=srgb&dl=pexels-sindre-str%C3%B8m-1040945.jpg&fm=jpg",
     "currency": "EUR"
   },
   {
-    "name": "Tangerines",
-    "description": "Yummy yellow fruit",
-    "sku": "sku_GBJ2WWfMaGNC2Z",
-    "price": 100,
-    "image": "https://images.unsplash.com/photo-1482012792084-a0c3725f289f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=225&q=80",
+    "name": "Yellow hoodie",
+    "description": "Yummy yellow hoodie cool new collection",
+    "sku": "sku_GBJ2WWfMyellowaGNC2Z",
+    "price": 1960,
+    "image": "https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "currency": "EUR"
+  },
+  {
+    "name": "Leather jacket brown",
+    "description": "Leather jacket brown cool new collection",
+    "sku": "sku_GBJ2WWfleatherGNC2Z",
+    "price": 10600,
+    "image": "https://images.pexels.com/photos/4012266/pexels-photo-4012266.jpeg?cs=srgb&dl=pexels-lorenzo-cinque-4012266.jpg&fm=jpg",
+    "currency": "EUR"
+  },
+  {
+    "name": "Leather jacket black",
+    "description": "Leather jacket black cool new collection",
+    "sku": "sku_GBJ2WWfleathggh567erGNC2Z",
+    "price": 20200,
+    "image": "https://images.pexels.com/photos/1833082/pexels-photo-1833082.jpeg?cs=srgb&dl=pexels-atef-khaled-1833082.jpg&fm=jpg",
+    "currency": "EUR"
+  },
+  {
+    "name": "Leather girl jacket black",
+    "description": "Leather jacket black cool new collection",
+    "sku": "sku_GBJ2WWfleathggh567erGNC2Z",
+    "price": 20200,
+    "image": "https://images.pexels.com/photos/1539935/pexels-photo-1539935.jpeg?cs=srgb&dl=pexels-lina-kivaka-1539935.jpg&fm=jpg",
     "currency": "EUR"
   }
 ]

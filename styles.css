@@ -1,7 +1,8 @@
 /* Variables */
 :root {
   --body-color: #fcfdfe;
-  --body-dark-color: #2D3748;
+  --checkout-color: #8f6ed5;
+  --elements-color: #6772e5;
   --body-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     sans-serif;
   --h1-color: #1a1f36;
@@ -34,4 +35,14 @@ button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+
+/* Products */
+
+@media only screen and (min-width: 620px) {
+  .container {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+} 
 

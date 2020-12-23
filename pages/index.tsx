@@ -10,7 +10,9 @@ const Shop: NextPage = () => {
     <Layout title="Shopping Cart | Next.js + TypeScript + React-Router">
       <Cart>
         <Navbar />
+        <div className='container'>
         <Products />
+        </div>
       </Cart>
     </Layout>
   )

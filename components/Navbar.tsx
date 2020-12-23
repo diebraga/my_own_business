@@ -21,13 +21,12 @@ import ThemeMode from './ThemeMode'
 import Wishlist from './Wishlist'
 
 const Navbar: React.FC = () => {
-  const bg = useColorModeValue('gray.100', '#090e1a')
-  const color = useColorModeValue('gray.700', 'gray.50')
+  const bg = useColorModeValue('gray.100', '#000912')
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
     <>
-    <Flex w="100%" p={4} boxShadow="lg" bg={bg} color={color} className='navbar'>
+    <Flex w="100%" p={4} boxShadow="lg" bg={bg} className='navbar'>
       <h1 style={{ fontWeight: 'bold', alignSelf: 'center' }}>
         <Link href='/'>
           Next Commerce
@@ -37,7 +36,6 @@ const Navbar: React.FC = () => {
 
       <Button 
         bg={bg} 
-        color={color} 
         variant="ghost" 
         as={Button} 
         onClick={onOpen}
@@ -61,7 +59,6 @@ const Navbar: React.FC = () => {
       <Menu>
       <MenuButton 
         bg={bg} 
-        color={color} 
         ml={1} 
         variant="ghost" 
         as={Button} 
