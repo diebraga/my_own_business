@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
 import { useShoppingCart, formatCurrencyString } from 'use-shopping-cart';
-import products from '../data/products.json';
 import { API_URL } from '../utils/url';
 import { NextPage } from 'next';
 import { 
@@ -19,7 +18,6 @@ import {
 } from '@chakra-ui/react'
 import { FaCartPlus } from 'react-icons/fa'
 import { AiFillMinusCircle } from 'react-icons/ai'
-import { FiHeart } from 'react-icons/fi'
 
 interface Props {
   name: string
@@ -40,7 +38,7 @@ const Products: NextPage = () => {
 
   useEffect(() => {
     // fetch from extwrnal api
-    const fetchAuthor = async () => {
+    const fetchProduct = async () => {
     try {
         const res = await axios.get(`${API_URL}/products/`);
         setProducts(res.data);
@@ -50,7 +48,7 @@ const Products: NextPage = () => {
     }
   }
 
-    fetchAuthor();
+    fetchProduct();
   }, []);
 
   const toast = useToast();
@@ -67,8 +65,7 @@ const Products: NextPage = () => {
         <WrapItem key={product.sku}>
           
           <Box mt={2} >
-            <Link href={`/products/${product.sku}`}>
-            <Box as='h1' style={{ cursor: 'pointer' }}>
+            <Box as='h1'>
               <Image className='prodimg' src={product.image} alt={product.name} />
               <Heading as='h4' size="xs" mt='10px'>
                 {formatCurrencyString({
@@ -78,7 +75,6 @@ const Products: NextPage = () => {
               </Heading>
               {product.name}
             </Box>
-            </Link>
             <Flex>
               <Spacer />
 
@@ -100,7 +96,7 @@ const Products: NextPage = () => {
                   })
                 }}
               >
-                <AiFillMinusCircle size={20} />
+                <AiFillMinusCircle className='btnicon' />
               </IconButton> 
 
               <IconButton
@@ -118,25 +114,9 @@ const Products: NextPage = () => {
                   })
                 }}
               >
-                <FaCartPlus size={20} />
+                <FaCartPlus className='btnicon' />
               </IconButton>
 
-                <IconButton
-                  colorScheme='pink'
-                  aria-label="Add to wish list"
-                  borderRadius="full"
-                  variant="ghost"
-                  boxSize='50px'
-                  onClick={() => {addItem(product); toast({
-                    title: "Item added to wishlist.",
-                    status: "info",
-                    duration: 3000,
-                    isClosable: true,
-                    })
-                  }}
-                >
-                  <FiHeart size={20} />
-                </IconButton>
               </Box>
             </Flex>
           </Box>
