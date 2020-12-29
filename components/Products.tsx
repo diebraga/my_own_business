@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import Link from 'next/link';
 import { useShoppingCart, formatCurrencyString } from 'use-shopping-cart';
 import products from '../data/products.json';
 import { API_URL } from '../utils/url';
-import { NextPage, GetStaticProps } from 'next';
+import { NextPage } from 'next';
 import { 
   IconButton, 
   Wrap, 
@@ -20,12 +21,37 @@ import { FaCartPlus } from 'react-icons/fa'
 import { AiFillMinusCircle } from 'react-icons/ai'
 import { FiHeart } from 'react-icons/fi'
 
+interface Props {
+  name: string
+  sku: string
+  image: string
+  currency: string
+  price: number
+  description: string
+}
+
 const Products: NextPage = () => {
   const { addItem, removeItem } = useShoppingCart();
   const [cartEmpty, setCartEmpty] = useState(true);
   const [loading, setLoading] = useState(false);
   const colorIcon = useColorModeValue('gray.700', 'teal.300')
   const { cartCount } = useShoppingCart();
+  const [products, setProducts] = useState<Props[]>([]);
+
+  useEffect(() => {
+    // fetch from extwrnal api
+    const fetchAuthor = async () => {
+    try {
+        const res = await axios.get(`${API_URL}/products/`);
+        setProducts(res.data);
+    }
+    catch (err) {
+      alert('Error connection!')
+    }
+  }
+
+    fetchAuthor();
+  }, []);
 
   const toast = useToast();
 
@@ -35,13 +61,13 @@ const Products: NextPage = () => {
     <>
     {/* Container */}
     <Wrap spacing={1} justify="center">
-      {products.map((product) => (
+      {products.map((product: Props) => (
         
         // Card
-        <WrapItem key={product.slug}>
+        <WrapItem key={product.sku}>
           
           <Box mt={2} >
-            <Link href={`/products/${product.slug}`}>
+            <Link href={`/products/${product.sku}`}>
             <Box as='h1' style={{ cursor: 'pointer' }}>
               <Image className='prodimg' src={product.image} alt={product.name} />
               <Heading as='h4' size="xs" mt='10px'>
@@ -65,7 +91,7 @@ const Products: NextPage = () => {
                 boxSize='50px'
                 variant="ghost"
                 disabled={cartEmpty || loading}
-                onClick={() => {removeItem(product.slug); toast({
+                onClick={() => {removeItem(product.sku); toast({
                   title: "Item Removed.",
                   description: "Check your cart.",
                   status: "warning",
@@ -123,14 +149,3 @@ const Products: NextPage = () => {
 
 export default Products;
 
-
-export async function getStaticProps() {
-  const product_res = await fetch(`${API_URL}/products/`)
-  const products = await product_res.json()
-
-  return {
-    props: {
-        products
-    }
-  }
-}
