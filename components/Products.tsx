@@ -18,6 +18,7 @@ import {
 } from '@chakra-ui/react'
 import { FaCartPlus } from 'react-icons/fa'
 import { AiFillMinusCircle } from 'react-icons/ai'
+import products from '../data/products.json'
 
 interface Props {
   name: string
@@ -34,22 +35,23 @@ const Products: NextPage = () => {
   const [loading, setLoading] = useState(false);
   const colorIcon = useColorModeValue('gray.700', 'teal.300')
   const { cartCount } = useShoppingCart();
-  const [products, setProducts] = useState<Props[]>([]);
+  
+  // const [products, setProducts] = useState<Props[]>([]);
 
-  useEffect(() => {
-    // fetch from extwrnal api
-    const fetchProduct = async () => {
-    try {
-        const res = await axios.get(`${API_URL}/products/`);
-        setProducts(res.data);
-    }
-    catch (err) {
-      alert('Error connection!')
-    }
-  }
+  // useEffect(() => {
+  //   // fetch from extwrnal api
+  //   const fetchProduct = async () => {
+  //   try {
+  //       const res = await axios.get(`${API_URL}/products/`);
+  //       setProducts(res.data);
+  //   }
+  //   catch (err) {
+  //     alert('Error connection!')
+  //   }
+  // }
 
-    fetchProduct();
-  }, []);
+  //   fetchProduct();
+  // }, []);
 
   const toast = useToast();
 
