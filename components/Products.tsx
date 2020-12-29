@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { useShoppingCart, formatCurrencyString } from 'use-shopping-cart';
 import products from '../data/products.json';
-import { NextPage } from 'next';
+import { API_URL } from '../utils/url';
+import { NextPage, GetStaticProps } from 'next';
 import { 
   IconButton, 
   Wrap, 
@@ -34,20 +36,23 @@ const Products: NextPage = () => {
     {/* Container */}
     <Wrap spacing={1} justify="center">
       {products.map((product) => (
-
+        
         // Card
-        <WrapItem key={product.sku}>
-          <Box mt={2} w="170px">
-            <Image w="170px" h="210px" src={product.image} alt={product.name} />
+        <WrapItem key={product.slug}>
+          
+          <Box mt={2} >
+            <Link href={`/products/${product.slug}`}>
+            <Box as='h1' style={{ cursor: 'pointer' }}>
+              <Image className='prodimg' src={product.image} alt={product.name} />
               <Heading as='h4' size="xs" mt='10px'>
                 {formatCurrencyString({
                   value: product.price,
                   currency: product.currency,
                 })} EUR
               </Heading>
-            <Box as='h1'>
               {product.name}
             </Box>
+            </Link>
             <Flex>
               <Spacer />
 
@@ -60,7 +65,7 @@ const Products: NextPage = () => {
                 boxSize='50px'
                 variant="ghost"
                 disabled={cartEmpty || loading}
-                onClick={() => {removeItem(product.sku); toast({
+                onClick={() => {removeItem(product.slug); toast({
                   title: "Item Removed.",
                   description: "Check your cart.",
                   status: "warning",
@@ -118,3 +123,14 @@ const Products: NextPage = () => {
 
 export default Products;
 
+
+export async function getStaticProps() {
+  const product_res = await fetch(`${API_URL}/products/`)
+  const products = await product_res.json()
+
+  return {
+    props: {
+        products
+    }
+  }
+}

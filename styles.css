@@ -39,10 +39,20 @@ button:disabled {
 
 /* Products */
 
+
+@media only screen and (min-width: 312px) {
+  .prodimg {
+    height: 210px;
+  }
+} 
+
 @media only screen and (min-width: 620px) {
   .container {
     padding-left: 60px;
     padding-right: 60px;
   }
-} 
 
+  .prodimg {
+    height: 360px;
+  }
+} 
