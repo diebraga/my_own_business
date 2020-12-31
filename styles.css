@@ -43,6 +43,7 @@ button:disabled {
 @media only screen and (min-width: 312px) {
   .prodimg {
     height: 210px;
+    width: 156px;
   }
 
   .btnicon {
@@ -63,5 +64,6 @@ button:disabled {
 
   .prodimg {
     height: 360px;
+    width: 290px;
   }
 } 

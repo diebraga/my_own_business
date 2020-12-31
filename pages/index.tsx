@@ -14,12 +14,13 @@ import {
   useToast,
   Flex, 
   WrapItem,
-} from '@chakra-ui/react'
-import { FaCartPlus } from 'react-icons/fa'
-import { AiFillMinusCircle } from 'react-icons/ai'
-import Layout from '../components/Layout'
-import Cart from '../components/Cart'
-import Navbar from '../components/Navbar'
+} from '@chakra-ui/react';
+import { FaCartPlus } from 'react-icons/fa';
+import { AiFillMinusCircle } from 'react-icons/ai';
+import { BsArrowRight } from 'react-icons/bs';
+import Layout from '../components/Layout';
+import Cart from '../components/Cart';
+import Navbar from '../components/Navbar';
 
 const Shop: NextPage = ({ products }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { addItem, removeItem } = useShoppingCart();
@@ -46,6 +47,7 @@ const Shop: NextPage = ({ products }: InferGetStaticPropsType<typeof getStaticPr
               
               <Box mt={2} >
               <Link href={`/products/${product.sku}`}>
+                <a>
                 <Box as='h1' style={{ cursor: 'pointer' }}>
                   <Image className='prodimg' src={product.image} alt={product.name} />
                   <Heading as='h4' size="xs" mt='10px'>
@@ -56,8 +58,11 @@ const Shop: NextPage = ({ products }: InferGetStaticPropsType<typeof getStaticPr
                   </Heading>
                   {product.name}
                 </Box>
+                </a>
               </Link>
                 <Flex>
+                <Link href={`/products/${product.sku}`}><a>Details <BsArrowRight /></a></Link>
+
                   <Spacer />
 
                     {/* Buttons */}

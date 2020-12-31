@@ -53,7 +53,6 @@ const CartSummary: React.FC = () => {
         mt={2}
         color='red.500'
         w='100%'
-        className="cart-style-background"
         type="button"
         onClick={() => {clearCart(); toast({
           title: "Item Cleared.",
@@ -72,7 +71,6 @@ const CartSummary: React.FC = () => {
         color='green.500'
         w='100%'
         mt={2}
-        className="cart-style-background"
         type="submit"
       >
         <strong>
